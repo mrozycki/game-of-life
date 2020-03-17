@@ -1,0 +1,10 @@
+*.pbm
+*.ppm
+*.png
+*.gif
+*.mp4
+CMakeCache.txt
+Makefile
+cmake_install.cmake
+CMakeFiles
+game_of_life
