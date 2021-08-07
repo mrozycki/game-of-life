@@ -1,8 +1,8 @@
 #pragma once
 
 #include <iostream>
-#include <vector>
 #include <string>
+#include <vector>
 
 namespace gfx {
 struct color {
@@ -27,4 +27,4 @@ private:
 
 std::ostream& operator<<(std::ostream& out, canvas const& c);
 void print_to_file(std::string const& filename, canvas const& c);
-}
+}  // namespace gfx

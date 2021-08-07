@@ -3,9 +3,7 @@
 #include <vector>
 
 namespace game {
-enum class cell {
-    DEAD, ALIVE
-};
+enum class cell { DEAD, ALIVE };
 
 class board {
 public:
@@ -22,4 +20,4 @@ private:
     std::size_t height_;
     std::vector<cell> cells_;
 };
-}
+}  // namespace game

@@ -2,9 +2,7 @@
 
 namespace game {
 board::board(std::size_t width, std::size_t height)
-    : width_(width)
-    , height_(height)
-    , cells_(width * height, cell::DEAD) {}
+    : width_(width), height_(height), cells_(width * height, cell::DEAD) {}
 
 void board::set_cell(int x, int y, cell cell) {
     if (x >= 0 && x < width_ && y >= 0 && y < height_) {
@@ -19,4 +17,4 @@ cell board::get_cell(int x, int y) const {
         return cell::DEAD;
     }
 }
-}
+}  // namespace game

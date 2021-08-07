@@ -1,23 +1,20 @@
 #include <fstream>
-#include <iostream>
 #include <iomanip>
-#include <vector>
+#include <iostream>
 #include <sstream>
+#include <vector>
 
-#include "gfx/canvas.h"
-#include "gfx/shapes.h"
 #include "game/board.h"
 #include "game/logic.h"
+#include "gfx/canvas.h"
+#include "gfx/shapes.h"
 
 gfx::canvas draw_board(game::board const& board, std::size_t scale_factor = 1) {
     gfx::canvas canvas(board.width() * scale_factor, board.height() * scale_factor);
     for (auto i = 0; i < board.width(); ++i) {
         for (auto j = 0; j < board.height(); ++j) {
             if (board.get_cell(i, j) == game::cell::ALIVE) {
-                gfx::rect(canvas,
-                    i * scale_factor, j * scale_factor,
-                    scale_factor, scale_factor,
-                    gfx::color{1});
+                gfx::rect(canvas, i * scale_factor, j * scale_factor, scale_factor, scale_factor, gfx::color{1});
             }
         }
     }
