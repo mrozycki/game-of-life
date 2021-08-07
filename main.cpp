@@ -21,9 +21,9 @@ gfx::canvas draw_board(game::board const& board, std::size_t scale_factor = 1) {
     return canvas;
 }
 
-std::string generate_filename(std::string const& prefix, std::size_t index) {
+std::string generate_filename(std::string const& prefix, std::size_t index, std::string const& suffix) {
     std::stringstream ss;
-    ss << prefix << std::setfill('0') << std::setw(3) << index << ".pbm";
+    ss << prefix << std::setfill('0') << std::setw(3) << index << suffix;
     return ss.str();
 }
 
@@ -36,7 +36,8 @@ int main() {
     glider.set_cell(3, 3, game::cell::ALIVE);
 
     for (auto i = 0; i < 30; ++i) {
-        gfx::print_to_file(generate_filename("glider", i), draw_board(glider, 10));
+        std::ofstream out(generate_filename("glider/frame_", i, ".ppm"));
+        out << draw_board(glider, 10);
         glider = game::next_generation(glider);
     }
 

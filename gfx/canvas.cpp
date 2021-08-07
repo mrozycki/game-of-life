@@ -12,28 +12,11 @@ void canvas::set_pixel(std::size_t x, std::size_t y, color c) {
     }
 }
 
-color canvas::get_pixel(std::size_t x, std::size_t y) const {
-    if (x < width_ && y < height_) {
-        return pixels_[y * width_ + x];
-    } else {
-        return color{0};
-    }
-}
-
 std::ostream& operator<<(std::ostream& out, canvas const& c) {
-    out << "P1\n";
-    out << c.width() << " " << c.height() << "\n";
-    for (auto y = 0; y < c.height(); ++y) {
-        for (auto x = 0; x < c.width(); ++x) {
-            out << c.get_pixel(x, y).black << " ";
-        }
+    out << "P1 " << c.width() << " " << c.height() << "\n";
+    for (auto pixel : c.pixels_) {
+        out << pixel.black << " ";
     }
-
     return out;
-}
-
-void print_to_file(std::string const& filename, canvas const& c) {
-    std::fstream file(filename, std::ios::out);
-    file << c;
 }
 }  // namespace gfx
